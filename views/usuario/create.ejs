@@ -1,0 +1,27 @@
+<%- include ('../partials/head')%>
+<%- include ('../partials/navbar')%>
+<div class="login" id = "signup" >
+    <h3>embarque na nossa viagem</h3>
+    <form action="/" method="POST">
+        <label>
+            <input type="text" placeholder="seu nome" required size="28">
+        </label>
+        <label>
+            <input type="text" placeholder="user" required size="28">
+        </label>
+        <label>
+            <input type="text" placeholder="e-mail" required size="28">
+        </label>
+        <label>
+            <input type="password" placeholder="senha" required size="28">
+        </label>
+        <label>
+            <input type="password" placeholder="confirme a senha" required size="28">
+        </label>
+
+        <a href="/"><button>embarcar</button></a>
+        
+    </form>
+</div>
+
+<%- include('../partials/footer')%>
