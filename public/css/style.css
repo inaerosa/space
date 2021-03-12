@@ -114,12 +114,19 @@ input{
     text-align: center;
 }
 
+.container_menu{
+    display: flex;
+}
+
+
 .nav_horizontal{
-    background-color: var(--fundo_claro);
+    background-color: #202020;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
     width: 15vw;
     height: 100vh;
-    border-top-right-radius: 8px;
+    border-top-right-radius: 15px;
     font-family: var(--fonte_texto);
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -128,28 +135,30 @@ input{
 .nav_horizontal img{
     min-width: 40px;
     min-height: 40px;
-    max-height: 180px;
-    max-width: 180px;
+    max-height: 185px;
+    max-width: 150px;
     object-fit: cover;
-    background-color: var(--fundo);
+  
     border-radius: 180px;
     margin: 20px;
     padding: 5px;
 }
-.nav_horizontal h3{
+.nav_horizontal h4{
     text-align: center;
+    font-size: 18px;
     margin-top: 10px;
 }
 
 
 .nav_horizontal ul{
-    margin-top: 80px;
+    margin-top: 50px;
     list-style: none;  
 }
 
 .nav_horizontal li{
     text-align: center;
     margin: 35px 0;
+    font-size: 14.5px;
 }
 
 .nav_horizontal a {
@@ -171,8 +180,71 @@ input{
     margin-right: 10px;
 }
 
+#marca_menu li:hover{
+    color: black;
+}
 
 
-/* @media (max-width: 600px){ */
+.card-metas{
+    
+    
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    
+    width: 42vw;
+    height: 40vh;
+    margin-left: 48%;
+    margin-top: 35%;
+}
 
-/* } */
+.card_texto table{
+    font-family: var(--fonte_texto);
+    margin-left: 30%;
+    padding-top:10%;
+    align-items: center;
+    text-align: center;
+    font-size: 25px;
+}
+.card_texto table{
+    margin-top: 20%;
+}
+.card_texto td{
+    padding-right: 40px;
+}
+.card_texto label{
+    margin-top: 100%;
+}
+
+.card_texto input[type="number"]::-webkit-inner-spin-button{
+    all: unset;
+
+
+}
+
+.card_texto input {
+    
+    align-items: center;
+    width: 70px;
+    height: 40px;
+    text-align: center;
+    margin-left: 5px;
+    border: 0px solid transparent;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.container_to-do{
+    font-family: var(--fonte_texto);
+    margin-left: 175px;
+    margin-top: 80px;
+    padding: 20px;
+
+}
+
+.container_to-do td{
+    text-align: center;
+    width: 250px;
+    height: 40px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+
