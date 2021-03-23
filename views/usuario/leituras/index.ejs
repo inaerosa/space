@@ -1,22 +1,4 @@
 <%- include ('../../partials/head')%>
-
-<%- include ('../../partials/nav_horizontal') %> 
-
-<div class="container_to-do">
-    <table>
-        <tr id="primeiro_to-do">
-            <td><p>quero ler</p></td>
-            <td><p>estou lendo</p></td>
-            <td><p>ja li</p></td>
-        </tr>
-        <tr>
-            <td><p>+</p></td>
-            <td><p>+</p></td>
-            <td><p>+</p></td>
-        </tr>
-    </table>
-</div>
-<%- include ('../../partials/footer')%><%- include ('../../partials/head')%>
 <%- include ('../../partials/nav_horizontal')%>
 
 <div class="container_to-do">
@@ -27,6 +9,9 @@
 			<h5> <i data-feather="bookmark" ></i>Chorar</h5>
 			<h5><i data-feather="bookmark" ></i>Dormir</h5>
 			<h5><i data-feather="bookmark" ></i>Comer</h5>
+			<div class="adicionar">
+			<input type="text" placeholder="novo livro"><button>+</button> 
+			</div>
 	</div>
 	<div class="lista" id="lendo">
 		<div class="cabecalho">
@@ -35,14 +20,25 @@
 			<h5> <i data-feather="bookmark" ></i>Chorar</h5>
 			<h5><i data-feather="bookmark" ></i>Dormir</h5>
 			<h5><i data-feather="bookmark" ></i>Comer</h5>
+			<div class="adicionar">
+				<input type="text" placeholder="novo livro"><button>+</button> 
+				</div>
 	</div>
 	<div class="lista" id="lidos">
 		<div class="cabecalho">
 			<h2 >lidos</h2>
 		</div>
-			<h5> <i data-feather="bookmark" ></i>Chorar</h5>
+			<h5> <lord-icon
+				src="https://cdn.lordicon.com//wxnxiano.json"
+				trigger="loop"
+				colors="primary:#ffffff,secondary:#ffffff"
+				style="width:35px;height:35px">
+			</lord-icon>Chorar</h5>
 			<h5><i data-feather="bookmark" ></i>Dormir</h5>
 			<h5><i data-feather="bookmark" ></i>Comer</h5>
+			<div class="adicionar">
+				<input type="text" placeholder="novo livro"><button>+</button> 
+				</div>
 	</div>
 </div>
 
