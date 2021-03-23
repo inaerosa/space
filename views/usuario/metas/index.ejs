@@ -6,7 +6,32 @@
             <div class = "card_texto">
                 <table>
                     <tr>
-                        <td><label>já li</label></td>
+                   <%- include ('../../partials/head')%>
+
+<%- include ('../../partials/nav_horizontal') %> 
+
+<div class = "card-metas">
+    <div class = "card_texto">
+        <table>
+            <tr>
+                <td><label>já li</label></td>
+                <td><label>meta</label></td>
+            </tr>
+            <tr>
+                <td><input type="number" name="ja_li" placeholder="ja li" min="0" value="<%=ja_li%>"></td>
+                <td><input type="number" name="meta" placeholder="meta"value="<%= meta %>" min="0"></td>
+            </tr>
+        </table>
+        
+    </div>
+    <progress max="100" value="25"></progress>
+</div>
+
+
+
+
+
+<%- include ('../../partials/footer')%>     <td><label>já li</label></td>
                         <td><label>meta</label></td>
                     </tr>
                     <tr>
