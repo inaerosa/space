@@ -1,0 +1,23 @@
+<%- include ('../../partials/head')%>
+
+<%- include ('../../partials/nav_horizontal') %> 
+
+
+<form action="/usuario/anotacoes" method="POST" >
+    <div class="comentarios">
+        <h2>minhas anotações</h2>
+        <div class="dados_livro">
+            <label>
+                <input type="text" name="nome_livro" id="nome_livro" placeholder="nome do livro" size=40>
+            </label>    
+            <label>
+                <input type="text" name="autor" id="autor" placeholder="nome do autor" size=30>
+            </label>    
+        </div>  
+        <textarea name="textarea"
+        rows="20" cols="60"  spellcheck="true"
+        placeholder="seus comentarios"></textarea>
+        <button>enviar</button>          
+    </div> 
+</form>
+<%- include ('../../partials/footer')%>
