@@ -1,3 +1,7 @@
+
+
+
+
 :root{
     --fundo: #1A1A1A;
     --fundo_claro: #343434;
@@ -13,16 +17,17 @@
 
 body{
     background-color: var(--fundo);
-    font-family:var(--fonte_titulo);
+    font-family:var(--fonte_texto);
     color: white;
 }
 
 
 
 .navbar{
-
+    font-family: var(--fonte_titulo);
     font-size: 20px;
     margin-right: 30px;
+
     padding: 10px;
 }
 .navbar img{
@@ -41,6 +46,7 @@ body{
     display: inline;
     padding: 10px;
     padding-top: 20px;
+    margin-top: 30px;
     
 }
 .navbar a{
@@ -52,14 +58,15 @@ body{
     text-align: center;
     margin-top: 35vh;
     
+    
 }
 .titulo h1{
+    font-family: var(--fonte_titulo);
     font-size: 80px;
     color: white;
     
 }
 .titulo p{
-    font-family: var(--fonte_texto);
     color: white;
     margin-left: 70px;
 }
@@ -76,7 +83,6 @@ body{
 .login form{
     padding: 80px;
     padding-top: 10px;
-    font-family: var(--fonte_texto);
 }
 
 input{
@@ -101,7 +107,6 @@ input{
 .login button{
     background-color: var(--fundo);
     color: white;
-    font-family: var(--fonte_texto);
     width: 90px;
     height: 32px;
     margin-left: 30%;
@@ -125,7 +130,6 @@ input{
     width: 15vw;
     height: 100vh;
     border-top-right-radius: 15px;
-    font-family: var(--fonte_texto);
 
     display: flex;
     flex-direction: column;
@@ -166,7 +170,13 @@ input{
     color: white;
 
 }
-
+ .settings{
+     display: flex;
+     justify-content: center;
+     position: absolute;
+     margin-bottom: 60px;
+     bottom: 0;
+ }
 .log-out{
     display: flex;
     justify-content: center;
@@ -176,7 +186,7 @@ input{
     margin-left:27px;
 }
 
-.log-out svg{
+.log-out, .settings svg{
     margin-right: 10px;
 }
 
@@ -197,10 +207,12 @@ input{
 }
 
 .card_texto table{
-    font-family: var(--fonte_texto);
-    margin-left: 30%;
+
+
     padding-top:10%;
+    display: flex;
     align-items: center;
+    justify-content: center;
     text-align: center;
     font-size: 25px;
 }
@@ -216,12 +228,9 @@ input{
 
 .card_texto input[type="number"]::-webkit-inner-spin-button{
     all: unset;
-
-
 }
 
 .card_texto input {
-    
     align-items: center;
     width: 70px;
     height: 40px;
@@ -233,18 +242,144 @@ input{
 }
 
 .container_to-do{
-    font-family: var(--fonte_texto);
-    margin-left: 175px;
-    margin-top: 80px;
-    padding: 20px;
 
+    display: flex;
+    margin-left:25%;
+    margin-top: 10%;
 }
 
-.container_to-do td{
+.container_to-do h5{
     text-align: center;
     width: 250px;
     height: 40px;
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
+
+.container_to-do h2{
+    text-align: center;
+    width: 250px;
+    height: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.973);
+    background: rgba(0, 0, 0, 0.37);
+}
+
+.lista{
+    margin-left: 20px;
+
+}
+i{
+   padding:10px;
+}
+
+.adicionar{
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    display: flex;
+    
+}  
+.adicionar button{
+   background-color: var(--fundo);
+   border:var(--fundo) 0px solid;
+   margin-top:4%;
+   margin-left: 2%;
+   color: white;
+   height: 30px;
+
+}
+
+.adicionar input{
+    border:var(--fundo) 0px solid;
+    border-bottom: white 1px solid;
+
+    margin:6px;
+    margin-left: 20%;
+}
+
+progress {
+    width: 300px;
+    margin-top: 5%;
+    margin: 10% auto;
+    padding: 1px;
+    background: var(--fundo_claro);
+    border-radius: 14px;
+    height: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+progress::-moz-progress-bar {
+    border-radius: 12px;
+    background: var(--fundo);
+    
+    
+  }
+
+  progress::-webkit-progress-bar {
+      background: transparent;
+  }  
+  progress::-webkit-progress-value {  
+    border-radius: 12px;
+    background: rgba(0,0,0,0.5);
+  } 
+
+.comentarios{
+    margin-left: 20px;
+    margin-top: 50px;
+    width: 170%;
+    color: white;
+}
+
+.comentarios h2{
+    margin-left: 50px;
+    margin-top: 80px;
+    padding-bottom: 30px;
+}
+
+#autor{
+    float: right;
+}
+
+.comentarios input, textarea{
+    border: 0px solid transparent;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    padding: 10px;
+    font-family: var(--fonte_texto);
+}
+
+textarea{
+    margin-left: 50px;
+    margin-top: 30px;
+    padding-top: 2px;
+    padding-left: 2px;
+    background-color: var(--fundo);
+    padding: 10px;
+    color: white;
+}
+::-webkit-scrollbar {
+    width: 7px;
+}
+::-webkit-resizer{
+    background: var(--fundo);
+}
+  
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: rgba(75, 75, 75, 0.8); 
+   
+}
+
+.comentarios button{
+    background-color: var(--fundo);
+    color: white;
+    display: block;
+    margin-left: 50px;
+    margin-top: 20px;
+    padding: 10px;
+    width: 80px;
+    border: 0px solid transparent;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    font-family: var(--fonte_texto);
+}
 
