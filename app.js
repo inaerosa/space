@@ -4,9 +4,6 @@ const path = require('path');
 const methodOverride = require('method-override');
 const mongoose= require('mongoose');
 const Usuario = require('./models/usuario');
-const Anotacao = require('./models/anotacao');
-const Meta = require('./models/meta');
-
 
 
 mongoose.connect('mongodb://localhost:27017/dbUsuarios', {useNewUrlParser: true, useUnifiedTopology: true})
@@ -60,18 +57,22 @@ app.get('/usuario/:id/edit', async(req,res)=>{
     res.render ('usuario/edit', {usuario});
 })
 
-app.put('/usuario/:id', async(req,res)=>{
+app.post('/usuario/:id', async(req,res)=>{
     const {id} = req.params;
     await Usuario.findByIdAndUpdate(id, req.body, {runValidators: true});
     res.render ('/usuario/' + id);
 })
 
+app.delete('/usuario/:id', async (req, res)=> {
+    const {id} = req.params;
+    await Usuario.findByIdAndDelete(id);
+    res.redirect('/index');
+})
+
 app.get('/usuario/:id/metas/index', async (req,res) =>{
     const {id} = req.params;
     const usuario = await Usuario.findById(id);
-    const ja_li = req.body;
-    const meta = req.body;
-    res.render('usuario/metas/index', {ja_li, meta, usuario});
+    res.render('usuario/metas/index', {usuario});
 })
 
 app.get('/usuario/:id/metas/new', async (req,res) =>{
@@ -80,12 +81,11 @@ app.get('/usuario/:id/metas/new', async (req,res) =>{
     res.render('usuario/metas/new', {usuario});
 })
 
-app.post('/usuario/:id/metas', async (req, res) =>{
-    const {id} = req.params;
-    const usuario = await Usuario.findById(id);
-    const novaMeta = new Meta(req.body);
-    await novaMeta.save();
-    res.redirect('/usuario/:id/metas', {usuario});
+ app.put('/usuario/:id/metas', async (req, res) =>{
+     const {id} = req.params;
+     const {meta, lido} = req.body;
+     const usuario = await Usuario.findByIdAndUpdate(id, {meta, lido}, {runValidators: true});
+     res.render ('usuario/metas/index', {usuario});
 })
 
 app.get('/usuario/:id/leituras/index', async (req,res) =>{
@@ -98,6 +98,12 @@ app.get('/usuario/:id/anotacoes/index', async (req,res) =>{
     const {id} = req.params;
     const usuario = await Usuario.findById(id);
     res.render('usuario/anotacoes/index', {usuario});
+})
+
+app.get('/usuario/:id/anotacoes/show', async (req,res) =>{
+    const {id} = req.params;
+    const usuario = await Usuario.findById(id);
+    res.render('usuario/anotacoes/show', {usuario});
 })
 
 app.get('/usuario/:id/anotacoes/new', async(req,res) =>{
