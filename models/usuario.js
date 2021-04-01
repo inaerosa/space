@@ -20,7 +20,28 @@ const usuarioSchema = new mongoose.Schema({
     confirme: {
         type: String,
         required: true
-    }
+    },
+    metas: {
+        meta:{
+            type: Number
+        },
+        lido: {
+            type: Number
+        }
+    }, 
+    anotacoes: [ {
+        autor:{
+            type: [String]
+        },
+        nome_livro:{
+            type: [String],
+            required: true
+        },
+        textarea:{
+            type: [String],
+        }
+    }]
+    
     
 })
 
