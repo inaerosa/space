@@ -1,10 +1,8 @@
 
 
-
-
 :root{
     --fundo: #1A1A1A;
-    --fundo_claro: #343434;
+    --fundo_claro: #202020;
     --fonte_titulo:'Spartan', sans-serif;
     --fonte_texto:'Sanchez', sans-serif;
 }
@@ -78,6 +76,7 @@ body{
     justify-content: center;
     margin-left: 38%;
     margin-top: 12%;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
 .login form{
@@ -182,7 +181,7 @@ input{
     justify-content: center;
     position: absolute;
     bottom: 0;
-    margin-bottom: 20px;
+    margin-bottom: 13vh;
     margin-left:27px;
 }
 
@@ -208,7 +207,7 @@ input{
 
 .card_texto table{
 
-
+    margin-left: 3vw;
     padding-top:10%;
     display: flex;
     align-items: center;
@@ -218,27 +217,25 @@ input{
 }
 .card_texto table{
     margin-top: 20%;
+
 }
 .card_texto td{
     padding-right: 40px;
 }
-.card_texto label{
-    margin-top: 100%;
+
+.card-metas a{
+    text-decoration: none;
+    color: white;
 }
 
-.card_texto input[type="number"]::-webkit-inner-spin-button{
-    all: unset;
-}
-
-.card_texto input {
-    align-items: center;
-    width: 70px;
-    height: 40px;
+.card-metas p{
+    margin-top: 0px;
     text-align: center;
-    margin-left: 5px;
-    border: 0px solid transparent;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    margin-left:0px;
+}
+
+.card-metas p:hover{
+    color: black;
 }
 
 .container_to-do{
@@ -250,9 +247,12 @@ input{
 
 .container_to-do h5{
     text-align: center;
+    padding:4px;
     width: 250px;
     height: 40px;
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
+
+
 }
 
 
@@ -297,8 +297,9 @@ i{
 
 progress {
     width: 300px;
-    margin-top: 5%;
-    margin: 10% auto;
+
+    margin: 8% auto;
+    margin-bottom: 5vh;
     padding: 1px;
     background: var(--fundo_claro);
     border-radius: 14px;
@@ -383,3 +384,135 @@ textarea{
     font-family: var(--fonte_texto);
 }
 
+#dashboardUsuario{
+    padding: 20px;
+    margin: 50px 50px auto;
+}
+
+#sorte{
+    margin-top: 20px;
+    font-style: italic;
+}
+
+.cards_dashboard{
+    position: absolute;
+    margin-top: 15vh;
+    margin-left: 15vw;
+        display: flex;
+    justify-content: center;
+ 
+}
+
+#card_meta, #card_leituras, #card_resenha{
+    background-color: var(--fundo_claro);
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    text-align: center;
+    align-items: center;
+    margin-left: 2vw;
+    width: 13vw;
+    height: 28vh;
+    padding-top: 50px;
+}
+
+#card_meta button, #card_leituras button, #card_resenha button{
+    padding: 5px;
+    margin-top: 5vh;
+    color: white;
+    background-color: var(--fundo);
+    border: 0px solid transparent;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    font-family: var(--fonte_texto);
+}
+
+#biblioteca{
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 10vw;
+    margin-right: 10vw;
+    max-height: 50px;
+    max-width:20px;
+}
+
+#biblioteca a{
+    text-decoration: none;
+    color: white;
+}
+
+#head-biblioteca{
+    margin: 70px 50px 70px;
+}
+
+#head-biblioteca a button{
+    border: none;
+    background-color: var(--fundo);
+    color: white;
+    font-size: 14px;
+    margin-top: 8px;
+    font-family: var(--fonte_texto);
+}
+.livro{
+    margin-left: 50px;
+    margin-bottom: 20px;
+    overflow:-moz-hidden-unscrollable;
+    padding: 20px;
+    height: 25vh;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+hr.style-one {
+    border: 0;
+    height: 1px;
+    background: #333;
+    background-image: linear-gradient(to right, #ccc, #333, #ccc);
+}
+
+#info_livro{
+    overflow: auto;
+    width: 70vw;
+    height: 60vh;
+    margin-top: 10vw;
+    margin-left: 5vw;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    padding: 30px;
+
+}
+
+#livro_cabecalho{
+    margin-bottom: 20px;
+}
+
+#livro_cabecalho h5{
+    margin-bottom: 20px;
+}
+
+#livro_cabecalho p{
+    display: flex;
+    flex-wrap: wrap;
+    text-align: justify;
+}
+
+.back{
+    padding: 20px;
+    margin-left: 20px;
+    margin-top: 20px;
+    border-radius: 180px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);  
+
+}
+
+.btnControle{
+    display: flex;
+    margin-left: 62vw;
+
+}
+
+#deleta_cadastro{
+    margin-left: 5vw;
+    margin-top: 2vh;
+}
+
+#deleta_cadastro button{
+    border: none;
+    border-radius: 180px;
+    margin: 0px;
+}

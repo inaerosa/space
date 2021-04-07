@@ -1,5 +1,26 @@
 <%- include ('../partials/head')%>
+<body onload="obterFrase()"></body>
 <%- include ('../partials/nav_horizontal')%>
+
+<div id="dashboardUsuario">
+    <h3>Olá, <%=usuario.nome%></h3>
+    <div id="sorte">
+        <div id="autor"></div>
+    </div>
+
+    
+</div>
+<div class="cards_dashboard">
+    <div id="card_meta">
+        <h5>crie sua meta</h5>
+        <a href="/usuario/<%= usuario._id%>/metas/new"><button>meta</button></a>
+    </div>
+    <div id="card_resenha">
+        <h5>crie sua nova anotação</h5>
+        <a href="/usuario/<%= usuario._id%>/anotacoes/new"><button>anotaçoes</button></a>     
+    </div>
+</div>
+
 
 
 <%- include('../partials/footer')%>

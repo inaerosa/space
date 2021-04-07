@@ -2,46 +2,29 @@
 
 <%- include ('../../partials/nav_horizontal') %> 
 
-        <div class = "card-metas">
-            <div class = "card_texto">
-                <table>
-                    <tr>
-                   <%- include ('../../partials/head')%>
-
-<%- include ('../../partials/nav_horizontal') %> 
-
 <div class = "card-metas">
     <div class = "card_texto">
         <table>
             <tr>
-                <td><label>já li</label></td>
-                <td><label>meta</label></td>
+                <td>já li</td>
+                <td>meta</td>
             </tr>
             <tr>
-                <td><input type="number" name="ja_li" placeholder="ja li" min="0" value="<%=ja_li%>"></td>
-                <td><input type="number" name="meta" placeholder="meta"value="<%= meta %>" min="0"></td>
+                <td><p><%=usuario.metas.lido%></p>
+                <td><p><%= usuario.metas.meta %></p>
             </tr>
         </table>
         
+        
     </div>
-    <progress max="100" value="25"></progress>
+
+    <progress max="100" value="<%=usuario.metas.lido / usuario.metas.meta *100%>"></progress>
+    <a href="/usuario/<%=usuario._id%>/metas/new"><p>atualize sua meta</p></a>
 </div>
 
 
 
 
-
-<%- include ('../../partials/footer')%>     <td><label>já li</label></td>
-                        <td><label>meta</label></td>
-                    </tr>
-                    <tr>
-                        <td><input type="number" placeholder="ja li" min="0" autofocus></td>
-                        <td><input type="number" placeholder="meta" min="0"></td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-</div>
 
 
 <%- include ('../../partials/footer')%>

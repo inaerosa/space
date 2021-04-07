@@ -1,8 +1,15 @@
 <nav class="navbar">
 
-<a href="/">   <img src="../images/saturno.png"></a> 
+<a href="/">   <img src="/images/saturno.png"></a> 
     <ul>
-        <a href="/login"><li>login</li></a>
-        <a href="usuario/create"><li>sign up</li></a>
+        <% if(currentUser) { %> 
+            <a href="/logout"><li>logout</li></a>
+   
+        
+ 
+        <% } else { %> 
+            <a href="/login"><li>login</li></a>
+        <a href="usuario/new"><li>sign up</li></a>
+        <% } %> 
     </ul>
 </nav>

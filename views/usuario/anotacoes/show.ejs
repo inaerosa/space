@@ -1,0 +1,41 @@
+<%- include ('../../partials/head')%>
+
+<%- include ('../../partials/nav_horizontal') %> 
+    <div id="info_livro">
+        <div id="livro_cabecalho">
+            <h3> <%= livro.nome_livro %>  </h3>
+            <h5> <%= livro.autor %></h5>
+            <hr>
+        </div>
+        <div id ="livro_anotacao">
+            <p><%=livro.textarea%></p>>     
+        </div>
+    </div>
+    <div class="btnControle">
+
+        <div class="back">
+            <a href="/usuario/<%=usuario._id%>/anotacoes/index">
+                <lord-icon
+                    src="https://cdn.lordicon.com/iiueiwdd.json"
+                    trigger="morph"
+                    colors="primary:#ffffff,secondary:#ffffff"
+                    style="width:40px;height:40px">
+                </lord-icon>
+            </a>
+        </div>
+        <div class="back">
+            <script src="https://cdn.lordicon.com//libs/frhvbuzj/lord-icon-2.0.2.js"></script>
+            <form action="/usuario/<%=usuario._id%>/anotacoes/<%=livro._id%>?_method=DELETE" method='post'>
+                <button><lord-icon 
+                    src="https://cdn.lordicon.com//gsqxdxog.json" 
+                    trigger="loop-on-hover" 
+                    colors="primary:#ffffff,secondary:#ffffff"
+                    style="width:40px;height:40px">
+                </lord-icon>
+            </button>
+            </form>
+        </div>
+    </div>
+
+
+<%- include ('../../partials/footer')%>

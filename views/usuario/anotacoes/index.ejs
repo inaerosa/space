@@ -1,5 +1,26 @@
 <%- include ('../../partials/head')%>
 
 <%- include ('../../partials/nav_horizontal') %> 
+    <div id="head-biblioteca">
+        <h2>minhas anotações</h2>
+        <a href="/usuario/<%= usuario._id%>/anotacoes/new"><button>+  adicionar nova anotação  </button></a> 
+    </div>
+   
+    <% for (livro of usuario.anotacoes) {%>
+    <div id="biblioteca">
+        <a href="/usuario/<%=usuario._id%>/anotacoes/<%=livro._id%>/show">
+            <div class="livro">
+                <h3><%=livro.nome_livro%></h3>
+                <hr>
+                <p><%=livro.autor%></p>
+            </div>
+        </a>
+    <%}%>
+
+        
+        
+         
+
+    </div>  
 
 <%- include ('../../partials/footer')%>

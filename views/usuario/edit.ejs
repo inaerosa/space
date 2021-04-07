@@ -1,27 +1,51 @@
 <%- include ('../partials/head')%>
-<%- include ('../partials/navbar')%>
+
 <div class="login" id = "signup" >
     <h3>altere seu passaporte</h3>
     <form action="/usuario/<%=usuario._id%>?_method=PUT" method="POST">
         <label for ="nome">
-            <input  type="text" name="nome" id="nome" placeholder="seu nome"  size="28">
+            <input  type="text" name="nome" id="nome" placeholder="seu nome"  value="<%=usuario.nome%>"size="28">
         </label>
         <label for = "user">
-            <input  type="text" name="user" id="user" placeholder="user"  size="28">
+            <input  type="text" name="user" id="user" placeholder="user" value="<%=usuario.user%>" readonly size="28">
         </label>
         <label for = "email">
-            <input type="text" name="email" id="email" placeholder="e-mail"  size="28">
+            <input type="text" name="email" id="email" placeholder="e-mail" value="<%=usuario.email%>" size="28">
         </label>
         <label for = "senha">
-            <input  type="password" name="senha" id="senha" placeholder="senha"  size="28">
+            <input  type="password" name="senha" id="senha" placeholder="senha" value="<%=usuario.senha%>" size="28">
         </label>
         <label  for="confirme">
-            <input type="password" name="confirme" id="confirme" placeholder="confirme a senha"  size="28">
+            <input type="password" name="confirme" id="confirme" placeholder="confirme a senha" value="<%=usuario.senha%>" size="28">
         </label>
-
         <button>pronto</button>
-        
     </form>
+
+        <div class="btnControle" id="deleta_cadastro">
+
+            <div class="back">
+                <a href="/usuario/<%=usuario._id%>">
+                    <lord-icon
+                        src="https://cdn.lordicon.com/iiueiwdd.json"
+                        trigger="morph"
+                        colors="primary:#ffffff,secondary:#ffffff"
+                        style="width:40px;height:40px">
+                    </lord-icon>
+                </a>
+            </div>
+            <div class="back">
+                <form action="/usuario/<%=usuario._id%>?_method=DELETE" method='post'>
+                    <button> teste</button>
+                </form>
+                   
+            </div>
+        </div>
+
+
+    
+
+        
+   
 </div>
 
 <%- include('../partials/footer')%>

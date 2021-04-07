@@ -1,23 +1,16 @@
 const mongoose = require('mongoose');
+const passportLocalMongoose = require('passport-local-mongoose');
 
 const usuarioSchema = new mongoose.Schema({
     nome: {
         type: String,
         required: true
     },
-    user: {
+    username: {
         type: String,
         required: true
     },
     email: {
-        type: String,
-        required: true
-    },
-    senha: {
-        type: String,
-        required: true
-    },
-    confirme: {
         type: String,
         required: true
     },
@@ -31,19 +24,36 @@ const usuarioSchema = new mongoose.Schema({
     }, 
     anotacoes: [ {
         autor:{
-            type: [String]
+            type: String
         },
         nome_livro:{
-            type: [String],
+            type: String,
             required: true
         },
         textarea:{
-            type: [String],
+            type: String,
+        },
+        livro: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Livro'
+        }
+    }], 
+    livros:[{
+        novo_livro:{
+            type: String
+        }, 
+        lendo:{
+            type: String
+        },
+        lido:{
+            type: String
         }
     }]
     
     
 })
+
+usuarioSchema.plugin(passportLocalMongoose);
 
 const Usuario = mongoose.model("Usuario", usuarioSchema);
 

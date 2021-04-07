@@ -8,6 +8,7 @@ const session = require('express-session');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const { allowedNodeEnvironmentFlags } = require("process");
+const { cursorTo } = require('readline');
 
 
 
@@ -59,15 +60,15 @@ app.get('/', (req,res) =>{
     res.render('index');
 });
 
-// app.get('/login', (req,res) =>{
-    // res.render('login.ejs');
-// })
-// 
-// app.post('/login', passport.authenticate("local", {failureRedirect: "/login"}), (req, res) =>{
-    // const redirectUrl = req.session.returnTo || "/";
-    // delete req.session.returnTo;
-    // res.redirect('usuario/:id/show');
-// })
+ app.get('/login', (req,res) =>{
+     res.render('login');
+ })
+ 
+ app.post('/login', passport.authenticate("local", {failureRedirect: "/login"}), (req, res) =>{
+     const redirectUrl = req.session.returnTo || "/";
+     delete req.session.returnTo;
+     res.redirect(redirectUrl);
+})
 
 app.get('/logout', (req, res) => {
     req.logout();
@@ -93,10 +94,10 @@ app.post('/usuario', async (req,res) =>{
     res.redirect('/usuario/show');
 })
 
-app.get('/usuario/:id',  async (req,res) =>{
+app.get('/usuario/:id', isLoggedIn, async (req,res) =>{
     const {id} = req.params;
     const usuario = await Usuario.findById(id);
-    if (usuario) {
+    if(req.user){
     res.render('usuario/show', {usuario});
     } else {
         res.send('perfil não encontrado');
@@ -121,13 +122,13 @@ app.delete('/usuario/:id',  isLoggedIn, async (req, res)=> {
     
      const {id} = req.params;
      await Usuario.findByIdAndDelete(id);
-     res.redirect('/index');
+     res.redirect('/');
  })
 
 
 //rotas de metas
 
-app.get('/usuario/:id/metas/index',   async (req,res) =>{
+app.get('/usuario/:id/metas/index',  isLoggedIn,  async (req,res) =>{
     const {id} = req.params;
     const usuario = await Usuario.findById(id);
     res.render('usuario/metas/index', {usuario});
@@ -146,41 +147,23 @@ app.get('/usuario/:id/metas/new', isLoggedIn, async (req,res) =>{
         res.render ('usuario/metas/index', {usuario});
 })
 
-
-//rotas de leituras
-
-app.get('/usuario/:id/leituras/index', isLoggedIn, async (req,res) =>{
-    const {id} = req.params;
-    const usuario = await Usuario.findById(id);
-    res.render('usuario/leituras/index', {usuario});
-})
-
-app.put('/usuario/:id/metas', isLoggedIn, async (req,res) =>{
-    const {id} = req.params;
-    const {autor, nome_livro, textarea} = req.body;
-
-    const usuario = await Usuario.findByIdAndUpdate(id, {$push: {anotacoes:{autor,nome_livro, textarea}}}, {runValidators: true, new:true, safe: true, upsert: true} )
-    await usuario.save();
-    res.render ('usuario/anotacoes/index', {usuario});
-})
-
 //rotas de anotações
 
-app.get('/usuario/:id/anotacoes/index',  async (req,res) =>{
+app.get('/usuario/:id/anotacoes/index', isLoggedIn,  async (req,res) =>{
     const {id} = req.params;
     const usuario = await Usuario.findById(id);
     res.render('usuario/anotacoes/index', {usuario});
 })
 
 
-app.get('/usuario/:id/anotacoes/new',  async(req,res) =>{
+app.get('/usuario/:id/anotacoes/new', isLoggedIn, async(req,res) =>{
     const {id} = req.params;
     const usuario = await Usuario.findById(id);
     res.render('usuario/anotacoes/new', {usuario});
 })
 
 
-app.put('/usuario/:id/anotacoes',  async (req,res) =>{
+app.put('/usuario/:id/anotacoes',  isLoggedIn, async (req,res) =>{
     const {id} = req.params;
     const {autor, nome_livro, textarea} = req.body;
 
@@ -190,7 +173,7 @@ app.put('/usuario/:id/anotacoes',  async (req,res) =>{
 })
 
 
-app.get('/usuario/:id/anotacoes/:id_livro/show', async(req,res) =>{
+app.get('/usuario/:id/anotacoes/:id_livro/show', isLoggedIn, async(req,res) =>{
     const {id} = req.params;
     const {id_livro} = req.params;
     const usuario = await Usuario.findById(id);
@@ -204,18 +187,13 @@ app.get('/usuario/:id/anotacoes/:id_livro/show', async(req,res) =>{
     }
 })
 
-app.delete('/usuario/:id/anotacoes/:id_livro/show', async (req, res) => {
+ app.delete('/usuario/:id/anotacoes/:id_livro',  isLoggedIn, async (req, res) => {
     const {id} = req.params;
     const {id_livro} = req.params;
-    const usuario = await Usuario.findById(id);
-    const anotacoes = usuario.anotacoes;
-    console.log(anotacoes);
-    
-
-    await Usuario.anotacoes.findByIdAndDelete(id_livro);
-    res.redirect('/pessoas');
-});
-
+    const usuario = await  Usuario.findByIdAndUpdate(id, {$pull: {anotacoes: {_id: id_livro}}})
+    res.redirect('/usuario/anotacoes/index', {usuario});
+ });
+ 
 app.listen(3000, ()=>{
     console.log('Servidor rodando');
 })

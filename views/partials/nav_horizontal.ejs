@@ -1,17 +1,24 @@
 
 <div class="container_menu">
     <div class="nav_horizontal">
-        <img src="/images/perfil.png">
-        <h4>inae_rosa</h4>
+        <a href="/usuario/<%=usuario._id%>"><img src="/images/perfil.png"></a>
 
+
+        <h4><%=usuario.username%></h4>
         <ul id="marca_menu">
-            <a href="/usuario/metas/index"><li>metas</li></a>
-            <a href="/usuario/leituras/index"><li>lista de leituras</li></a>
-            <a href="/usuario/anotacoes/index"><li>minhas anotações</li></a>
-            <div class="log-out">
-                <a href="/"><i data-feather="log-out"></i></a>
-                <a href="/"><p>sair</p></a>
+            <a href="/usuario/<%=usuario._id%>/metas/index"><li>metas</li></a>
+            <a href="/usuario/<%=usuario._id%>/anotacoes/index"><li>minhas anotações</li></a>
+            <div class="settings">
+                <a href="/usuario/<%=usuario._id%>/edit"><i data-feather="settings"></i></a>
+                <a href="/usuario/<%=usuario._id%>/edit"><p>configurações</p></a>
             </div>
+            <div class="log-out">
+                
+                <a href="/logout"><i data-feather="log-out"></i></a>
+                <a href="/logout"><p>sair</p></a>
+            </div>
+            
+            
         </ul>
     </div>
     <div class="content">
