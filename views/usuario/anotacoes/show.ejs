@@ -8,10 +8,10 @@
             <hr>
         </div>
         <div id ="livro_anotacao">
-            <p><%=livro.textarea%></p>>     
+            <p><%=livro.textarea%></p>   
         </div>
     </div>
-    <div class="btnControle">
+    <div class="btnControle_show">
 
         <div class="back">
             <a href="/usuario/<%=usuario._id%>/anotacoes/index">
@@ -23,9 +23,9 @@
                 </lord-icon>
             </a>
         </div>
-        <div class="back">
+        <div class="back" id="deletar">
             <script src="https://cdn.lordicon.com//libs/frhvbuzj/lord-icon-2.0.2.js"></script>
-            <form action="/usuario/<%=usuario._id%>/anotacoes/<%=livro._id%>?_method=DELETE" method='post'>
+            <form action="/usuario/<%=usuario._id%>/anotacoes/<%=livro._id%>?_method=PUT" method='post'>
                 <button><lord-icon 
                     src="https://cdn.lordicon.com//gsqxdxog.json" 
                     trigger="loop-on-hover" 

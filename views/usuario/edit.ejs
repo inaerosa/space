@@ -7,21 +7,18 @@
             <input  type="text" name="nome" id="nome" placeholder="seu nome"  value="<%=usuario.nome%>"size="28">
         </label>
         <label for = "user">
-            <input  type="text" name="user" id="user" placeholder="user" value="<%=usuario.user%>" readonly size="28">
+            <input  type="text" name="user" id="user" placeholder="user" value="<%=usuario.username%>" readonly size="28">
         </label>
         <label for = "email">
             <input type="text" name="email" id="email" placeholder="e-mail" value="<%=usuario.email%>" size="28">
         </label>
         <label for = "senha">
-            <input  type="password" name="senha" id="senha" placeholder="senha" value="<%=usuario.senha%>" size="28">
-        </label>
-        <label  for="confirme">
-            <input type="password" name="confirme" id="confirme" placeholder="confirme a senha" value="<%=usuario.senha%>" size="28">
+            <input  type="password" name="senha" id="senha" placeholder="nova senha"  size="28">
         </label>
         <button>pronto</button>
     </form>
 
-        <div class="btnControle" id="deleta_cadastro">
+        <div class="btnControle" >
 
             <div class="back">
                 <a href="/usuario/<%=usuario._id%>">
@@ -33,19 +30,20 @@
                     </lord-icon>
                 </a>
             </div>
+            
             <div class="back">
-                <form action="/usuario/<%=usuario._id%>?_method=DELETE" method='post'>
-                    <button> teste</button>
+                <script src="https://cdn.lordicon.com//libs/frhvbuzj/lord-icon-2.0.2.js"></script>
+                <form action="/usuario/<%=usuario._id%>?_method=DELETE" method='post' style="padding:0px">
+                    <button style="width:40px"><lord-icon 
+                        src="https://cdn.lordicon.com//gsqxdxog.json" 
+                        trigger="loop-on-hover" 
+                        colors="primary:#ffffff,secondary:#ffffff"
+                        style="width:40px;height:40px">
+                    </lord-icon>
+                </button>
                 </form>
-                   
             </div>
         </div>
 
-
-    
-
-        
-   
-</div>
 
 <%- include('../partials/footer')%>
