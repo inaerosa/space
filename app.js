@@ -7,12 +7,10 @@ const Usuario = require('./models/usuario');
 const session = require('express-session');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
-const { allowedNodeEnvironmentFlags } = require("process");
-const { cursorTo } = require('readline');
 
 
 
-mongoose.connect('mongodb://localhost:27017/dbUsuarios', {useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect('mongodb://localhost:27017/dbSpace', {useNewUrlParser: true, useUnifiedTopology: true})
 .then(() =>{
     console.log("Conexao com o banco estabelecida");
 })
@@ -64,20 +62,26 @@ app.get('/', (req,res) =>{
      res.render('login');
  })
  
- app.post('/login', passport.authenticate("local", {failureRedirect: "/login"}), (req, res) =>{
-     const redirectUrl = req.session.returnTo || "/";
-     delete req.session.returnTo;
-     res.redirect(redirectUrl);
-})
 
 app.get('/logout', (req, res) => {
     req.logout();
     res.redirect('/');
 })
+
+app.post('/login',
+  passport.authenticate('local', { successRedirect: '/usuario',
+                                   failureRedirect: '/login', })
+);
 // rotas de usuário
 
 app.get ('/usuario/new', (req, res) =>{
     res.render ("usuario/new");
+})
+
+app.get('/usuario' , isLoggedIn, async (req, res) =>{
+    const id = req.user;
+    const usuario = await Usuario.findById(id);
+    res.render('usuario/show', {usuario});
 })
 
 app.post('/usuario', async (req,res) =>{
@@ -91,18 +95,10 @@ app.post('/usuario', async (req,res) =>{
     } catch (e){
         console.log(e);
     }
-    res.redirect('/usuario/show');
+    res.redirect('/login');
 })
 
-app.get('/usuario/:id', isLoggedIn, async (req,res) =>{
-    const {id} = req.params;
-    const usuario = await Usuario.findById(id);
-    if(req.user){
-    res.render('usuario/show', {usuario});
-    } else {
-        res.send('perfil não encontrado');
-    }
-})
+
 
 
 
@@ -114,16 +110,16 @@ app.get('/usuario/:id/edit', isLoggedIn, async(req,res)=>{
 
  app.put('/usuario/:id', isLoggedIn, async(req,res)=>{
      const {id} = req.params;
-     await Usuario.findByIdAndUpdate(id, req.body, {runValidators: true});
-     res.redirect ('/usuario/' + id);
+     await Usuario.findByIdAndUpdate(id, req.body, {runValidators: true, new:true, safe: true, upsert: true});
+     res.redirect ('/usuario');
  })
 
 app.delete('/usuario/:id',  isLoggedIn, async (req, res)=> {
-    
      const {id} = req.params;
      await Usuario.findByIdAndDelete(id);
      res.redirect('/');
  })
+
 
 
 //rotas de metas
@@ -173,7 +169,7 @@ app.put('/usuario/:id/anotacoes',  isLoggedIn, async (req,res) =>{
 })
 
 
-app.get('/usuario/:id/anotacoes/:id_livro/show', isLoggedIn, async(req,res) =>{
+app.get('/usuario/:id/anotacoes/:id_livro/show',  isLoggedIn, async(req,res) =>{
     const {id} = req.params;
     const {id_livro} = req.params;
     const usuario = await Usuario.findById(id);
@@ -187,11 +183,25 @@ app.get('/usuario/:id/anotacoes/:id_livro/show', isLoggedIn, async(req,res) =>{
     }
 })
 
- app.delete('/usuario/:id/anotacoes/:id_livro',  isLoggedIn, async (req, res) => {
+ app.put('/usuario/:id/anotacoes/:id_livro', isLoggedIn, async (req, res) => {
     const {id} = req.params;
     const {id_livro} = req.params;
-    const usuario = await  Usuario.findByIdAndUpdate(id, {$pull: {anotacoes: {_id: id_livro}}})
-    res.redirect('/usuario/anotacoes/index', {usuario});
+
+    const usuario = await Usuario.findByIdAndUpdate(id,
+        {$pull: {anotacoes: {_id: id_livro}}},
+        {runValidators: true, new:true, safe: true, upsert: true},
+        function(err) {
+            if(err){
+            console.log(err);
+            }else{
+                res.redirect('/usuario/'+id+'/anotacoes/index');
+            }
+        }
+    
+    );
+    console.log(usuario);
+        
+
  });
  
 app.listen(3000, ()=>{
