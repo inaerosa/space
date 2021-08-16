@@ -8,14 +8,15 @@
         <h2>insira aqui sua meta</h2>
         <div class="dados_livro">
             <label  style="margin-left:50px" > já li: 
-                <input type="number" min="1" name="lido" id="lido" style="margin-left:50px" value="<%=usuario.metas.lido%>" size=7 placeholder="insira aqui os livros lidos">
+                <input type="number"  name="lido" id="lido" style="margin-left:50px" value="<%=usuario.metas.lido%>" size=7 placeholder="insira aqui os livros lidos">
             </label>  
-            <label  style="margin-left:50px"> minha meta: <br>
+            <label  style="margin-left:50px"> minha meta:
                 <input type="number" min="1" name="meta" id="meta" value="<%=usuario.metas.meta%>" style="margin-left:50px" size=7 placeholder="insira aqui sua meta">
             </label>    
-            
-        </div>  
-       <button>enviar</button>
+          
+        </div> 
+        <button>enviar</button> 
+  
     </div> 
 </form>
 <%- include ('../../partials/footer')%>
